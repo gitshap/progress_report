@@ -6,8 +6,15 @@ from reports.forms import ReportForm
 
 
 def home(request):
-    date_selected = request.POST['report-date']
+    try:
+        date_selected = request.POST.get('report-date')
+        if not date_selected:
+            date_selected = '2022-01-01'
+    except:
+        print("eh")
+        
     date_selected_split = date_selected.split("-")
+    
     year = date_selected_split[0]
     month = date_selected_split[1]
     day = date_selected_split[2]
@@ -16,7 +23,8 @@ def home(request):
     converted_day = int(day)
     reports = Report.objects.filter(created_at=date(converted_year,
                                                     converted_month,
-                                                    converted_day))
+                                                    converted_day)).order_by
+    ('modified')
     context = {
         'reports': reports
     }

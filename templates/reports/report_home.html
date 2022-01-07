@@ -28,12 +28,12 @@
       </div>
       <form method="POST">{% csrf_token %} 
         <label for="report-date">Select Date:</label>
-        <input type="date" id="report-date" name="report-date">
+        <input type="date" name="report-date">
         <button type="submit">Search</button>
         </form>
 
       {% for report in reports %}
-      <div class="border-top border-start border-end border-success border-3">
+      <div class="border border-success border-3 m-1">
         <h4 class="text-sm-center fs-6">{{ report.id }}</h1>
         <h1 class="text-lg-center">{{ report.title }}</h1>
         <p class="text-sm-center">{{ report.note }}</p>
