@@ -9,12 +9,10 @@ def home(request):
     try:
         date_selected = request.POST.get('report-date')
         if not date_selected:
-            date_selected = '2022-01-01'
-    except:
+            date_selected = str(date.today())
+    except Exception:
         print("eh")
-        
     date_selected_split = date_selected.split("-")
-    
     year = date_selected_split[0]
     month = date_selected_split[1]
     day = date_selected_split[2]

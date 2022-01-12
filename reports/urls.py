@@ -4,7 +4,7 @@ from reports.views import home, create_report
 
 urlpatterns = [
     # home page
-    path('home', home, name='home'),
+    path('', home, name='home'),
 
     # create page
     path('create/', create_report, name='create_report')
